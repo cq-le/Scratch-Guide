@@ -1,4 +1,4 @@
-function getAssetPaths2() {
+function getAssetPaths() {
     let assetPathsArray = [
         "/assets/backdrop-number.png",
         "/assets/change-effect.png",
@@ -49,7 +49,7 @@ function getAssetPaths2() {
 
 export function load({ params }) {
 	return {
-		assetPaths: getAssetPaths2(),
+		assetPaths: getAssetPaths(),
         groups: {
             'Motion': {
                 'State Blocks'  : ['x-position', 'y-position', 'direction'],
@@ -63,13 +63,44 @@ export function load({ params }) {
                 'Switch Blocks'  : ['set-costume', 'next-costume', 'set-backdrop', 'next-backdrop', 'set-layer', 'change-layer'],
                 'Graphics Blocks': ['change-size', 'set-size', 'change-effect', 'set-effect']
             },
-            'Sound': {},
-            'Events': {},
-            'Control': {},
-            'Sensing': {},
-            'Operators': {},
-            'Variables': {},
-            'My Blocks': {},
+            'Sound': {
+                'State Blocks': [],
+                'Play Blocks': [],
+                'Effect Blocks': [],
+                'Volume Blocks': []
+            },
+            'Events': {
+                'Input Blocks': [],
+                'State Blocks': [],
+                'Broadcast Blocks': []
+            },
+            'Control': {
+                'Timing Blocks': [],
+                'Conditional Blocks': [],
+                'Loop Blocks': [],
+                'Clone Blocks': []
+            },
+            'Sensing': {
+                'State Blocks': [],
+                'Touching Blocks': [],
+                'Input Blocks': [],
+                'Special Blocks': []
+            },
+            'Operators': {
+                'Math Blocks': [],
+                'Boolean Blocks': [],
+                'String Blocks': [],
+                'Special Blocks': []
+            },
+            'Variables': {
+                'Variable Options': [],
+                'Variable Blocks': [],
+                'List State': [],
+                'List Changing': []
+            },
+            'My Blocks': {
+                'Block Options': []
+            },
         },
         programs: {
             'Motion': "https://scratch.mit.edu/projects/1153447292/embed",
