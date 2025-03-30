@@ -7,6 +7,7 @@
     const setEasyText = () => {userState.easyTextMode = !userState.easyTextMode};
     const setCurrentTab = (tab) => {
         userState.currentTab = tab;
+        userState.currentGroup = '';
         document.documentElement.style.setProperty('--nav-bar-background',        data.blockColors[tab][0]);
         document.documentElement.style.setProperty('--nav-bar-button-background', data.blockColors[tab][0]);
         document.documentElement.style.setProperty('--nav-bar-hover-background',  data.blockColors[tab][1]);

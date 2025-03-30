@@ -1,25 +1,3 @@
-async function getAssetPaths() {
-    let assetPathsArray = null;
-    let assetPaths = {};
-    let loading = true;
-    let error = null;
-    try {
-        const response = await fetch('./src/routes/data/asset-paths.json');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        assetPathsArray = await response.json();
-        for (const assetPath of Object.values(assetPathsArray)) {
-            assetPaths[assetPath.match(/([^/.]+)(?:\.?[^/.])*$/)[1]] = assetPath.replaceAll("\\\\", "/");
-        }
-        return assetPaths;
-    } catch (e) {
-        error = e;
-    } finally {
-        loading = false;
-    }
-}
-
 function getAssetPaths2() {
     let assetPathsArray = [
         "/assets/backdrop-number.png",
@@ -69,7 +47,7 @@ function getAssetPaths2() {
 }
 
 
-export async function load({ params }) {
+export function load({ params }) {
 	return {
 		assetPaths: getAssetPaths2(),
         groups: {

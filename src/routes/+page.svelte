@@ -1,9 +1,13 @@
 <script>
 
     import { userState } from './states.svelte.js';
+    import { base } from '$app/paths'
     let { data } = $props();
 
-    const setCurrentGroup = (groupType) => { userState.currentGroup = groupType; };
+    const setCurrentGroup = (groupType) => { 
+        userState.currentGroup = groupType;
+        userState.currentBlock = '';
+    };
     const setCurrentBlock = (blockItem) => { userState.currentBlock = blockItem; };
 
 </script>
@@ -19,7 +23,7 @@
             <div id="block-items">
                 {#each data.groups[currentTab][userState.currentGroup] as blockItem}
                     <button onclick={() => setCurrentBlock(blockItem)}>
-                        <img src={data.assetPaths[blockItem]} alt={blockItem}>
+                        <img src={`${base}/${data.assetPaths[blockItem]}`} alt={blockItem}>
                     </button>
                 {/each}
             </div>
@@ -50,7 +54,9 @@
     }
     main {
         display: flex;
-        justify-content: space-between;
+        flex-basis: 0;
+        flex-grow: 1;
+        justify-content: center;
         height: calc(100svh - 50px);
         max-width: 100svw;
     }
@@ -60,29 +66,74 @@
     }
     #block-container {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         flex-direction: column;
         width: 100%;
-        gap: 10px;
         box-sizing: border-box;
+    }
+    #block-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        height: 100%;
     }
     #block-groups {
         display: flex;
         justify-content: space-between;
         width: 100%;
         height: 20svh;
+        margin: 0;
+        box-sizing: border-box;
     }
     #block-groups > button {
         background: var(--nav-bar-background);
         flex-basis: 0;
         flex-grow: 1;
         height: 20svh;
+        box-sizing: border-box;
         border: none;
         border-bottom-left-radius: 2svh;
         border-bottom-right-radius: 2svh;
         font-size: 1.4rem;
         transition-property: background;
         transition-duration: 0.2s;
+    }
+    #block-items {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column wrap;
+        box-sizing: border-box;
+        height: 100%;
+        width: 25svw;
+        margin: 0;
+    }
+    #block-items > button {
+        flex: auto;
+        height: 25%;
+        width: 50%;
+        max-height: 25svh;
+        max-width: 25svw;
+        background: none;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+    #block-items > button > img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    #block-text {
+        width: 25svw;
+    }
+    #block-text > p {
+        margin: 0;
+        max-height: calc(100svh - 20svh - 50px);
+        width: 50svw;
     }
 </style>
