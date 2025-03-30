@@ -1,7 +1,7 @@
 <script>
 
     import { userState } from './states.svelte.js';
-    import { base } from '$app/paths'
+    import { base } from '$app/paths';
     let { data } = $props();
 
     const setCurrentGroup = (groupType) => { 
@@ -23,7 +23,7 @@
             <div id="block-items">
                 {#each data.groups[currentTab][userState.currentGroup] as blockItem}
                     <button onclick={() => setCurrentBlock(blockItem)}>
-                        <img src={`${base}/${data.assetPaths[blockItem]}`} alt={blockItem}>
+                        <img src={`${base}${data.assetPaths[blockItem]}`} alt={blockItem}>
                     </button>
                 {/each}
             </div>
