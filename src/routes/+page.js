@@ -34,10 +34,10 @@ export async function load({ params }) {
                 'Special Blocks': ['edge-bounce', 'set-rotation-style']
             },
             'Looks': {
-                'State Blocks'   : [],
-                'Speech Blocks'  : [],
-                'Switch Blocks'  : [],
-                'Graphics Blocks': []
+                'State Blocks'   : ['show', 'hide', 'clear-looks-effects', 'costume-number', 'backdrop-number', 'size'],
+                'Speech Blocks'  : ['say-for-duration', 'say', 'think-for-duration', 'think'],
+                'Switch Blocks'  : ['set-costume', 'next-costume', 'set-backdrop', 'next-backdrop', 'set-layer', 'change-layer'],
+                'Graphics Blocks': ['change-size', 'set-size', 'change-effect', 'set-effect']
             },
             'Sound': {},
             'Events': {},
@@ -50,7 +50,7 @@ export async function load({ params }) {
         programs: {
             'Motion': "https://scratch.mit.edu/projects/1153447292/embed",
             'Looks': "https://scratch.mit.edu/projects/1154266906/embed",
-            'Sound': "",
+            'Sound': "https://scratch.mit.edu/projects/1154735337/embed",
             'Events': "",
             'Control': "",
             'Sensing': "",
