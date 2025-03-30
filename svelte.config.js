@@ -13,9 +13,9 @@ const config = {
 			precompress: false,
 			strict: true
 		}),
-		paths: {
-			base: process.argv.includes('dev') ? '/Scratch-Guide' : process.env.BASE_PATH
-		}
+	},
+	paths: {
+		base: process.argv.includes('dev') ? '' : '/Scratch-Guide'
 	}
 };
 
