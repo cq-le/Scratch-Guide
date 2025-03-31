@@ -12,6 +12,7 @@ function getAssetPaths() {
         "/assets/broadcast-message.png",
         "/assets/change-effect.png",
         "/assets/change-layer.png",
+        "/assets/change-pitch-effect.png",
         "/assets/change-size.png",
         "/assets/change-sound-effect.png",
         "/assets/change-variable.png",
@@ -87,6 +88,7 @@ function getAssetPaths() {
         "/assets/set-drag-mode.png",
         "/assets/set-effect.png",
         "/assets/set-layer.png",
+        "/assets/set-pitch-effect.png",
         "/assets/set-rotation-style.png",
         "/assets/set-size.png",
         "/assets/set-sound-effect.png",
@@ -164,7 +166,7 @@ export function load({ params }) {
                 'State Blocks': ['distance-to-sprite', 'set-drag-mode', 'loudness', 'timer', 'reset-timer', 'backdrop-number-of-stage'],
                 'Touching Blocks': ['touching-sprite', 'touching-color', 'touching-colors'],
                 'Input Blocks': ['ask', 'answer', 'key-pressed', 'mouse-down', 'mouse-x', 'mouse-y'],
-                'Special Blocks': ['current-date', 'days-since-2000', 'username']
+                'Special Blocks': ['current-date', 'date-since-2000', 'username']
             },
             'Operators': {
                 'Math Blocks': ['add', 'subtract', 'multiply', 'divide', 'modulo'],
