@@ -1,7 +1,8 @@
 export const userState = $state({
     dropdownState: false,
     currentTab: 'Motion',
-    currentGroup: 'stateBlocks',
+    currentGroup: 'State Blocks',
+    currentGroupLength: 0,
     currentBlock: '',
     easyTextMode: false,
 })

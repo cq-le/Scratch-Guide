@@ -28,9 +28,9 @@
     </button>
     <div id="options">
         {#if userState.easyTextMode}
-            <button onclick={() => setEasyText()}>Switch to Detailed</button>
+            <button onclick={() => setEasyText()}>Switch to<br>Detailed Explanation</button>
         {:else}
-            <button onclick={() => setEasyText()}>Switch to Easy</button>
+            <button onclick={() => setEasyText()}>Switch to<br>Easy Explanation</button>
         {/if}
     </div>
 </nav>
@@ -44,10 +44,15 @@
 {/if}
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Handlee&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
     :global(:root) {
-        --nav-bar-background: rgba(150, 195, 255, 0.95);
-        --nav-bar-button-background: rgba(150, 195, 255, 0.95);
-        --nav-bar-hover-background: rgba(195, 201, 255, 1.0);
+        --nav-bar-background: rgba(76,151,255,0.95);
+        --nav-bar-button-background: rgba(76,151,255,0.95);
+        --nav-bar-hover-background: rgba(153,195,255,1.0);
+    }
+    * {
+        font-family: "Noto Sans", sans-serif;
+        font-weight: 600;
     }
     nav {
         display: flex;
@@ -103,6 +108,9 @@
     #dropdown-container > button {
         font-size: 1.3rem;
         width: 100%;
+    }
+    #options > button {
+        width: 12rem;
     }
 </style>
 
