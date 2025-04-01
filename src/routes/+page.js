@@ -58,7 +58,7 @@ export function load({ params }) {
             'Motion': "https://scratch.mit.edu/projects/1153447292/embed",
             'Look': "https://scratch.mit.edu/projects/1154266906/embed",
             'Sound': "https://scratch.mit.edu/projects/1154735337/embed",
-            'Event': "",
+            'Event': "https://scratch.mit.edu/projects/1155868152/embed",
             'Control': "",
             'Sensing': "",
             'Operator': "",
