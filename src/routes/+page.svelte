@@ -3,6 +3,7 @@
     import { userState } from './states.svelte.js';
     import { base } from '$app/paths';
 	import { onMount } from 'svelte';
+    import sanitizeHTML from 'sanitize-html';
     let { data } = $props();
     onMount(() => {
         addEventListenersToGroupButtons();
@@ -58,9 +59,15 @@
             </div>
             <div id="block-text">
                 {#if userState.easyTextMode}
-                    <p>{data.blockText[`${userState.currentBlock}-easy`] || data.blockText[userState.currentBlock] || ''}</p>
+                    <p>{@html sanitizeHTML(data.blockText[`${userState.currentBlock}-easy`]) 
+                        || sanitizeHTML(data.blockText[userState.currentBlock])
+                        || ''}
+                    </p>
                 {:else}
-                    <p>{data.blockText[userState.currentBlock] || ''}</p>
+                    <p>
+                        {@html sanitizeHTML(data.blockText[userState.currentBlock])
+                        || ''}
+                    </p>
                 {/if}
             </div>
         </div>
@@ -189,6 +196,7 @@
     #block-text > p {
         margin: 0;
         max-height: calc(100svh - 20svh - 50px);
+        font-size: clamp(0.8rem, 2vw, 1.5rem); 
         width: 25svw;
         white-space: pre-line;
         text-align: center;

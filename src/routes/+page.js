@@ -67,26 +67,34 @@ export function load({ params }) {
         },
         blockText: {
             'x-position': 'A number representing the horizontal position of the sprite. Changing this number will move the sprite left or right.\
-            \n\nPositive numbers mean the sprite is towards the right.\
-            \nNegative numbers mean the sprite is towards the left.',
-            'x-position-easy': '⟷ position\n+ moves ⟶\n- moves ⟵',
+            <br><br>Positive numbers mean the sprite is towards the right.\
+            <br>Negative numbers mean the sprite is towards the left.',
+            'x-position-easy': '⟷ position<br>＋ moves ⟶<br>— moves ⟵',
             
             'y-position': 'A number representing the vertical position of the sprite. Changing this number will move the sprite up or down.\
-            \n\nPositive numbers mean the sprite is towards the top.\
-            \nNegative numbers mean the sprite is towards the bottom.',
-            'y-position-easy': '',
+            <br><br>Positive numbers mean the sprite is towards the top.\
+            <br>Negative numbers mean the sprite is towards the bottom.',
+            'y-position-easy': '↕ position<br>＋ moves ↑<br>— moves ↓',
 
             'direction': 'A number representing the direction that a sprite is pointing in.\
-            \n\n[0 or 360] indicates pointing to the top.\
-            \n[90 or -270] indicates pointing to the right.\
-            \n[180 or -180] indicates pointing to the bottom.\
-            \n[270 or -90]  indicates pointing to the left.',
-            'direction-easy': '0 points up, 90 points right, 180 points down, -90 points left',
+            <br><br>[0 or 360] indicates pointing to the top.\
+            <br>[90 or -270] indicates pointing to the right.\
+            <br>[180 or -180] indicates pointing to the bottom.\
+            <br>[270 or -90]  indicates pointing to the left.',
+            'direction-easy': '0 or 360 : ↑<br>90 or -270 : ⟶<br>180 or -180 : ↓<br>-90 or 270 : ⟵',
 
             'go-to-sprite': 'Sets the position of the sprite to another sprite instantly.',
+            'go-to-sprite-easy': 'Move to sprite instantly.',
+
             'go-to-position': 'Sets the position of the sprite to a specific position instantly.',
+            'go-to-position-easy': 'Move to position instantly.',
+
             'glide-to-sprite': 'Smoothly moves the sprite to another sprite over a given duration.',
+            'glide-to-sprite-easy': 'Move to sprite smoothly.',
+
             'glide-to-position': 'Smoothly moves the sprite to a specific position over a given duration.',
+            'glide-to-position-easy': 'Move to position smoothly.',
+            
             'point-in-direction': 'Sets where the sprite is pointed towards.',
             'point-towards-sprite': 'Sets the sprite\'s direction to point towards another sprite.',
             'set-x': 'Sets the sprite\'s x position to a specific value',
