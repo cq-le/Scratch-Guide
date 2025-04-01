@@ -4,6 +4,9 @@
     import { base } from '$app/paths';
 	import { onMount } from 'svelte';
     let { data } = $props();
+    onMount(() => {
+        addEventListenersToGroupButtons();
+    })
 
     const setCurrentGroup = (groupType) => {
         let root = document.documentElement;
@@ -14,10 +17,12 @@
         : root.style.setProperty('--button-max-width', "25svw");
         userState.currentBlock = '';
     };
+    
     const setCurrentBlock = (blockItem) => { 
         userState.currentBlock = blockItem;
     };
-    onMount(() => {
+
+    const addEventListenersToGroupButtons = () => {
         let groupButtons = document.querySelectorAll("#block-groups > button");
         groupButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -30,11 +35,10 @@
                     button2.dataset.toggle === 'true'
                     ? button2.classList.add('active')
                     : button2.classList.remove('active')
-                    console.log(button2.className);
                 })
             })
         })
-    })
+    }
 </script>
 
 {#snippet block(currentTab)}
@@ -62,14 +66,19 @@
         </div>
     </div>
 {/snippet}
+
 {#snippet scratchProgram(currentTab)}
     <iframe title='' src={data.programs[currentTab]} allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
 {/snippet}
+
+
 
 <main>
     {@render block(userState.currentTab)}
     {@render scratchProgram(userState.currentTab)}
 </main>
+
+
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
