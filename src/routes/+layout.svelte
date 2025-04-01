@@ -6,6 +6,7 @@
     const toggleDropdown = () => { userState.dropdownState = !userState.dropdownState };
     const setEasyText = () => {userState.easyTextMode = !userState.easyTextMode};
     const setCurrentTab = (tab) => {
+        document.querySelectorAll("#block-groups > button").forEach(button => { button.dataset.toggle = 'false'; })
         userState.currentTab = tab;
         userState.currentGroup = '';
         document.documentElement.style.setProperty('--nav-bar-background',        data.blockColors[tab][0]);

@@ -2,24 +2,46 @@
 
     import { userState } from './states.svelte.js';
     import { base } from '$app/paths';
+	import { onMount } from 'svelte';
     let { data } = $props();
 
     const setCurrentGroup = (groupType) => {
+        let root = document.documentElement;
         userState.currentGroup = groupType;
         userState.currentGroupLength = data.groups[userState.currentTab][userState.currentGroup].length;
+        userState.currentGroupLength > 4 
+        ? root.style.setProperty('--button-max-width', "12.5svw") 
+        : root.style.setProperty('--button-max-width', "25svw");
         userState.currentBlock = '';
     };
     const setCurrentBlock = (blockItem) => { 
         userState.currentBlock = blockItem;
     };
+    onMount(() => {
+        let groupButtons = document.querySelectorAll("#block-groups > button");
+        groupButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                setCurrentGroup(button.dataset.name);
+                groupButtons.forEach(button2 => {
+                    button2.dataset.name === userState.currentGroup 
+                    ? button2.dataset.toggle = 'true' 
+                    : button2.dataset.toggle = 'false';
 
+                    button2.dataset.toggle === 'true'
+                    ? button2.classList.add('active')
+                    : button2.classList.remove('active')
+                    console.log(button2.className);
+                })
+            })
+        })
+    })
 </script>
 
 {#snippet block(currentTab)}
     <div id="block-container">
         <div id="block-groups">
             {#each Object.keys(data.groups[currentTab]) as groupType}
-                <button onclick={() => setCurrentGroup(groupType)}>{groupType}</button>
+                <button data-toggle='false' data-name={groupType} onclick={() => setCurrentGroup(groupType)}>{groupType}</button>
             {/each}
         </div>
         <div id="block-info">
@@ -52,6 +74,9 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Handlee&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+    :global(:root) {
+        --button-max-width: 25svw;
+    }
     :global(body) {
         margin: 0;
         font-family: "Noto Sans", sans-serif;
@@ -99,11 +124,20 @@
         height: 20svh;
         box-sizing: border-box;
         border: none;
+        border-left: 2px solid var(--nav-bar-hover-background);
+        border-right: 2px solid var(--nav-bar-hover-background);
+        filter: drop-shadow(0mm 6mm 0mm var(--nav-bar-hover-background));
         border-bottom-left-radius: 2svh;
         border-bottom-right-radius: 2svh;
         font-size: 2rem;
         transition-property: background;
         transition-duration: 0.2s;
+    }
+    :global(#block-groups > button[data-toggle="true"]) {
+        background: var(--nav-bar-hover-background);
+    }
+    #block-groups > button:hover {
+        background: var(--nav-bar-hover-background);
     }
     #block-items {
         display: flex;
@@ -112,6 +146,7 @@
         align-items: center;
         flex-flow: column wrap;
         box-sizing: border-box;
+        max-height: calc(100svh - 20svh - 53px);
         width: 25svw;
         margin: 0;
     }
@@ -120,12 +155,12 @@
         flex-grow: 1;
         height: 25%;
         width: 100%;
-        max-width: 25svw;
+        max-width: var(--button-max-width);
         background: none;
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        border: 2px solid black;
+        border: none;
     }
     #block-items > button > img {
         max-width: 100%;
