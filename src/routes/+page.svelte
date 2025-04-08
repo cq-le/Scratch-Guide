@@ -79,7 +79,9 @@
 {/snippet}
 
 
-
+{#each data.programs as link}
+    <link rel='preload' as='document' href={link}>
+{/each}
 <main>
     {@render block(userState.currentTab)}
     {@render scratchProgram(userState.currentTab)}
@@ -142,15 +144,17 @@
         border: none;
         border-left: 2px solid var(--nav-bar-hover-background);
         border-right: 2px solid var(--nav-bar-hover-background);
-        filter: drop-shadow(0mm 6mm 0mm var(--nav-bar-hover-background));
+        filter: drop-shadow(0mm 0mm 0mm var(--nav-bar-hover-background));
         border-bottom-left-radius: 2svh;
         border-bottom-right-radius: 2svh;
         font-size: 2rem;
-        transition-property: background;
+        transform-origin: top center;
+        transition-property: background, filter;
         transition-duration: 0.2s;
     }
     :global(#block-groups > button[data-toggle="true"]) {
         background: var(--nav-bar-hover-background);
+        filter: drop-shadow(0mm 6mm 0mm var(--nav-bar-hover-background));
     }
     #block-groups > button:hover {
         background: var(--nav-bar-hover-background);
@@ -185,6 +189,12 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        transition-property: filter, transform;
+        transition-duration: 0.2s;
+    }
+    #block-items > button > img:hover {
+        filter: hue-rotate(60deg);
+        transform: scale(1.1);
     }
     #block-text {
         display: flex;

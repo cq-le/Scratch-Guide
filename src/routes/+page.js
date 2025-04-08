@@ -114,7 +114,7 @@ export function load({ params }) {
             'turn-right-easy': 'Turns sprite ↻',
 
             'turn-left': 'Changes the sprite\'s direction by subtracting a specific value from it.',
-            'turn-left-easy': 'TUrns sprite ↺',
+            'turn-left-easy': 'Turns sprite ↺',
 
             'edge-bounce': 'Keeps the sprite within the bounds of the screen. Touching the screen will cause the sprite to change its direction depending on how it is moving.',
             'edge-bounce-easy': 'Keeps sprite on screen. Sprite will bounce off edges.',
